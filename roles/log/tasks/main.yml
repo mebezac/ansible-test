@@ -1,0 +1,10 @@
+---
+- name: Change rsyslog configuration to accept remote logs
+  copy: src=rsyslog.conf dest=/etc/rsyslog.conf
+  notify:
+    - restart rsyslog
+
+- name: Copy config to filter sidekiq tag out to separate log file
+  copy: src=30-sidekiq.conf dest=/etc/rsyslog.d
+  notify:
+    - restart rsyslog

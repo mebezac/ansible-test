@@ -1,0 +1,25 @@
+---
+- hosts: worker1
+  remote_user: root
+  roles:
+    - role: zzet.rbenv
+      rbenv_users:
+      - root
+    - common
+    - worker
+
+
+- hosts: worker2
+  remote_user: root
+  roles:
+    - role: zzet.rbenv
+      rbenv_users:
+      - root
+    - common
+    - worker
+
+- hosts: log1
+  remote_user: root
+  roles:
+    - common
+    - log
